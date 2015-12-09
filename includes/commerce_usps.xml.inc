@@ -41,6 +41,9 @@ function commerce_usps_rate_v4_request($order, $shipping_address) {
     $package->addChild('Ounces', $weight['ounces']);
     $package->addChild('Container', 'VARIABLE');
     $package->addChild('Size', 'REGULAR');
+    if ($service == 'usps_standard_post'){
+      $package->addChild('GroundOnly', 'TRUE');
+    }
     $package->addChild('Machinable', 'TRUE');
     $i++;
   }
